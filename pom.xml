@@ -49,6 +49,23 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <testSources>
+                        <testSource>
+                            <directory>${project.basedir}/src/test/groovy</directory>
+                            <includes>
+                                <include>**/*.groovy</include>
+                            </includes>
+                        </testSource>
+                        <testSource>
+                            <directory>${project.basedir}/src/test/java</directory>
+                            <includes>
+                                <include>**/*.java</include>
+                            </includes>
+                        </testSource>
+                    </testSources>
+
+                </configuration>
             </plugin>
             <!-- Optional plugins for using Spock -->
             <!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
@@ -58,6 +75,8 @@
                 <configuration>
                     <useModulePath>false</useModulePath> <!-- https://issues.apache.org/jira/browse/SUREFIRE-1809 -->
                     <useFile>false</useFile>
+                    <testSourceDirectory>src/test/groovy</testSourceDirectory>
+                    <testSourceDirectory>src/test/java</testSourceDirectory>
                     <includes>
                         <include>**/*Test</include>
                         <include>**/*Spec</include>
